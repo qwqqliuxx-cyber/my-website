@@ -27,21 +27,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # 已更新到 v4
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # 已更新到 v4
         with:
-          node-version: 18 # 您可以根据项目需要修改Node版本
+          node-version: 18
       - name: Install dependencies
         run: npm install
       - name: Build
         run: npm run build
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v5 # 已更新到 v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3 # 已更新到 v3 (这是修复您问题的关键)
         with:
-          # Upload dist folder
           path: './dist'
 
   # Deployment job
@@ -54,4 +53,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4 # 已更新到 v4
